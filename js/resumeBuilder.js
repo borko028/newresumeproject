@@ -108,17 +108,18 @@ var projects = {
     "display": function displayProjects() {
         for (var i = 0; i < projects.projects.length; i++) {
 
-          $("#projects").append(HTMLprojectStart);
+            $("#projects").append(HTMLprojectStart);
 
-          var myPName = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
-          var myPDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
-          var myPDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
-          var myPImage = HTMLprojectImage.replace("%data%", projects.projects[i].images);
-          $(".project-entry:last").append(myPName, myPDates, myPDescription, myPImage);
-          /*projects.projects[i].images.forEach(function(element) {
-            var myPImage = HTMLprojectImage.replace("%data%", element);
-            $(".project-entry:last").append(myPImage);});*/
-
+            var myPName = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+            var myPDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+            var myPDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+            var myPImage = HTMLprojectImage.replace("%data%", projects.projects[i].images);
+            $(".project-entry:last").append(myPName, myPDates, myPDescription);
+            function addImageToPage(element) {
+              var myPImage = HTMLprojectImage.replace("%data%", element);
+              $(".project-entry:last").append(myPImage);
+              }
+            projects.projects[i].images.forEach(addImageToPage);
         }
 
     }
